@@ -1,6 +1,6 @@
-# Análisis de Opinión en Repositorios Git
+# Análisis de Opinión en Repositorios Git (PLN)
 
-Este proyecto implementa un sistema de **Procesamiento de Lenguaje Natural (PLN)** clásico para analizar la "salud" y opinión de proyectos de software Open Source.
+Este proyecto implementa un sistema de **Procesamiento de Lenguaje Natural (PLN)** para analizar la "salud" y opinión de proyectos de software Open Source.
 
 El sistema extrae mensajes reales (Issues, Pull Requests y Comentarios) de GitHub y aplica técnicas de aprendizaje automático para detectar sentimientos, identificar temas recurrentes y buscar mensajes similares.
 
@@ -8,26 +8,28 @@ El sistema extrae mensajes reales (Issues, Pull Requests y Comentarios) de GitHu
 
 El proyecto cumple con los siguientes objetivos de análisis:
 
-* **Recolección de Datos (RF-01):** Conexión a la API de GitHub para descargar datasets reales.
-* **Preprocesamiento (RF-02):** Limpieza de texto, eliminación de ruido (URLs, código), stopwords y Lematización/Stemming.
+* **Recolección (RF-01):** Conexión a la API de GitHub para descargar datasets reales.
+* **Preprocesamiento (RF-02):** Limpieza de texto, eliminación de ruido (URLs, código), stopwords y Lematización.
 * **Representación (RF-03):** Vectorización de textos usando el modelo **TF-IDF**.
-* **Análisis de Sentimiento (RF-04):** Clasificación automática de mensajes (Positivo, Negativo, Neutral) usando Regresión Logística.
+* **Análisis de Sentimiento (RF-04):** Clasificación automática (Positivo, Negativo, Neutral) usando **VADER** y **Regresión Logística**.
 * **Detección de Temas (RF-05):** Agrupamiento no supervisado usando **K-Means Clustering**.
 * **Buscador Semántico (RF-06):** Búsqueda de mensajes similares mediante **Similitud del Coseno**.
 
-## Estructura del Repositorio
+## Estructura del Proyecto
 
-El proyecto sigue la estructura estándar solicitada:
+Los archivos están organizados siguiendo el flujo de trabajo de datos:
 
 ```text
-├── data/                                 # Datasets generados
-│   ├── dataset_github.csv                # Datos crudos extraídos de la API
-│   ├── dataset_procesado.csv             # Datos limpios y normalizados
-│   └── dataset_final_analizado.csv       # Datos con etiquetas de sentimiento y temas
+├── recoleccion_datos.py         # 1. Script de extracción (GitHub API)
+├── dataset_github.csv           #    Salida: Datos crudos
 │
-├── src/                            # Código fuente
-│   ├── recoleccion_datos.py        # Script para conectar con GitHub API
-│   ├── preprocesamiento.py         # Script de limpieza y TF-IDF
-│   └── dataset_final_analizado.py  # Script de modelos (Sentimiento, K-Means, Similitud)
+├── procesamiento.py             # 2. Script de limpieza y normalización
+├── dataset_procesado.csv        #    Salida: Datos limpios y lematizados
 │
-└── README.md                   # Documentación del proyecto
+├── dataset_final_analizado.py   # 3. Script de Modelos (Sentimiento, K-Means, Similitud)
+├── dataset_final_analizado.csv  #    Salida: Datos etiquetados y con clusters
+│
+├── Graficos.py                  # 4. Generador de Visualizaciones
+├── grafico_pastel.png           #    Imagen: Distribución porcentual
+├── grafico_barras.png           #    Imagen: Conteo de mensajes
+└── nube_palabras.png            #    Imagen: WordCloud del repositorio
