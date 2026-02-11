@@ -33,3 +33,5 @@ Los archivos están organizados siguiendo el flujo de trabajo de datos:
 ├── grafico_pastel.png           #    Imagen: Distribución porcentual
 ├── grafico_barras.png           #    Imagen: Conteo de mensajes
 └── nube_palabras.png            #    Imagen: WordCloud del repositorio
+│
+└── README.md                    # Documentación del proyecto
