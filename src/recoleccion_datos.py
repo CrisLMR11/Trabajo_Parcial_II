@@ -85,7 +85,7 @@ def main():
                     "texto": item['body']
                 })
 
-            # 3. Descargar y guardar Comentarios asociados [cite: 48]
+            # 3. Descargar y guardar Comentarios asociados
             comentarios = obtener_comentarios(id_ref)
             for com in comentarios:
                 if com.get('body'):
