@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 import time
 
-GITHUB_TOKEN = "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"
+GITHUB_TOKEN = "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"
 
 # Repositorio a analizar
 OWNER = "pallets"
